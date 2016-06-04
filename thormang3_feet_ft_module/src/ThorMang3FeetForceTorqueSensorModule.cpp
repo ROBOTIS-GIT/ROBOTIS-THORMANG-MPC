@@ -14,8 +14,6 @@
 
 using namespace ROBOTIS;
 
-ThorMang3FeetForceTorqueSensor *ThorMang3FeetForceTorqueSensor::unique_instance_ = new ThorMang3FeetForceTorqueSensor();
-
 ThorMang3FeetForceTorqueSensor::ThorMang3FeetForceTorqueSensor()
     : control_cycle_msec_(8)
 {
@@ -318,7 +316,7 @@ void ThorMang3FeetForceTorqueSensor::QueueThread()
 }
 
 
-void ThorMang3FeetForceTorqueSensor::Process(std::map<std::string, Dynamixel *> dxls)
+void ThorMang3FeetForceTorqueSensor::Process(std::map<std::string, Dynamixel *> dxls, std::map<std::string, Sensor *> sensors)
 {
 	exist_r_leg_an_r_ = false;
 	exist_r_leg_an_p_ = false;

@@ -50,8 +50,6 @@ enum StepDataStatus
 	StepDataStatus4 = 4, //
 };
 
-PreviewControlWalking* PreviewControlWalking::m_UniqueInstance = new PreviewControlWalking();
-
 PreviewControlWalking::PreviewControlWalking()
 {
 

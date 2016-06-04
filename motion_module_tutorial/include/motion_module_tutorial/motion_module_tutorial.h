@@ -20,11 +20,9 @@
 namespace ROBOTIS
 {
 
-class MotionModuleTutorial : public MotionModule
+class MotionModuleTutorial : public MotionModule, public Singleton<MotionModuleTutorial>
 {
 private:
-    static MotionModuleTutorial *unique_instance_;
-
     int             control_cycle_msec_;
     boost::thread   queue_thread_;
 
@@ -32,14 +30,11 @@ private:
     ros::Subscriber sub1_;
     ros::Publisher  pub1_;
 
-    MotionModuleTutorial();
-
     void QueueThread();
 
 public:
+    MotionModuleTutorial();
     virtual ~MotionModuleTutorial();
-
-    static MotionModuleTutorial *GetInstance() { return unique_instance_; }
 
     /* ROS Topic Callback Functions */
     void    TopicCallback(const std_msgs::Int16::ConstPtr &msg);

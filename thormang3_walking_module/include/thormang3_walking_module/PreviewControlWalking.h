@@ -11,6 +11,7 @@
 #include <vector>
 #include <pthread.h>
 
+#include "robotis_framework_common/Singleton.h"
 #include "math/WalkingModuleMath.h"
 #include "thormang3_kinematics_dynamics/ThorMang3KinematicsDynamics.h"
 
@@ -18,12 +19,11 @@
 namespace ROBOTIS
 {
 
-	class PreviewControlWalking
+	class PreviewControlWalking : public Singleton<PreviewControlWalking>
 	{
 	private:
 		ThorMang3KinematicsDynamics* thormang3_kd_;
 
-		static PreviewControlWalking* m_UniqueInstance;
 		std::vector<StepData> m_StepData;
 
 		double m_GoalWaistYawAngleRad;
@@ -88,8 +88,6 @@ namespace ROBOTIS
 		double m_ShoulerSwingGain, m_ElbowSwingGain;
 
 		//private methods
-		PreviewControlWalking();
-
 		void CalcStepIdxData();
 		void CalcRefZMP();
 		double wsin(double time, double period, double period_shift, double mag, double mag_shift);
@@ -129,6 +127,7 @@ namespace ROBOTIS
 	public:
 		double m_OutAngleRad[16];
 
+        PreviewControlWalking();
 		virtual ~PreviewControlWalking();
 
 		int P_GAIN;
@@ -286,8 +285,6 @@ namespace ROBOTIS
 		double m_iu_roll_init_rad, m_iu_pitch_init_rad, m_iu_yaw_init_rad;
 
 	public:
-		static PreviewControlWalking* GetInstance() { return m_UniqueInstance; }
-
 		void Initialize();
 		void LocalizeAllWalkingParameter();
 		void Start();

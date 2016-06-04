@@ -60,11 +60,9 @@ public:
 
 };
 
-class BaseModule : public MotionModule
+class BaseModule : public MotionModule, public Singleton<BaseModule>
 {
 private:
-    static BaseModule *unique_instance_;
-
     int                 control_cycle_msec_;
     boost::thread       queue_thread_;
     boost::thread       tra_gene_tread_;
@@ -78,7 +76,6 @@ private:
     bool				has_goal_joints_;
     bool 				ini_pose_only_;
 
-    BaseModule();
 
     void QueueThread();
     void SetCtrlModule(std::string module);
@@ -88,9 +85,8 @@ private:
     void PublishStatusMsg(unsigned int type, std::string msg);
 
 public:
+    BaseModule();
     virtual ~BaseModule();
-
-    static BaseModule *GetInstance() { return unique_instance_; }
 
     /* ROS Topic Callback Functions */
     void    IniPoseMsgCallback( const std_msgs::String::ConstPtr& msg );

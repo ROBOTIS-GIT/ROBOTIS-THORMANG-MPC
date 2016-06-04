@@ -10,8 +10,6 @@
 
 using namespace ROBOTIS;
 
-MotionModuleTutorial *MotionModuleTutorial::unique_instance_ = new MotionModuleTutorial();
-
 MotionModuleTutorial::MotionModuleTutorial()
     : control_cycle_msec_(8)
 {

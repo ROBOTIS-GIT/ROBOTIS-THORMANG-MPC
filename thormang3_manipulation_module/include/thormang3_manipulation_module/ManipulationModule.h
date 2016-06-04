@@ -60,11 +60,9 @@ public:
 
 };
 
-class ManipulationModule : public MotionModule
+class ManipulationModule : public MotionModule, public Singleton<ManipulationModule>
 {
 private:
-    static ManipulationModule *unique_instance_;
-
     int                 control_cycle_msec_;
     boost::thread       queue_thread_;
     boost::thread*       tra_gene_tread_;
@@ -73,17 +71,14 @@ private:
 
     std::map<std::string, int> joint_name_to_id;
 
-    ManipulationModule();
-
     void QueueThread();
 
     void parseData( const std::string &path );
     void parseIniPoseData( const std::string &path );
 
 public:
+    ManipulationModule();
     virtual ~ManipulationModule();
-
-    static ManipulationModule *GetInstance() { return unique_instance_; }
 
     /* ROS Topic Callback Functions */
     void    IniPoseMsgCallback( const std_msgs::String::ConstPtr& msg );

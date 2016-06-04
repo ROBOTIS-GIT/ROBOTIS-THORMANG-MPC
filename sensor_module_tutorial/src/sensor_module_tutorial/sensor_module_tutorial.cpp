@@ -10,8 +10,6 @@
 
 using namespace ROBOTIS;
 
-SensorModuleTutorial *SensorModuleTutorial::unique_instance_ = new SensorModuleTutorial();
-
 SensorModuleTutorial::SensorModuleTutorial()
     : control_cycle_msec_(8)
 {

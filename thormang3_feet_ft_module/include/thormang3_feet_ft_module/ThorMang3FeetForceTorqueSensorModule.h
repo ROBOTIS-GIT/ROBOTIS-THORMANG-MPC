@@ -31,11 +31,9 @@
 namespace ROBOTIS
 {
 
-class ThorMang3FeetForceTorqueSensor : public SensorModule
+class ThorMang3FeetForceTorqueSensor : public SensorModule, public Singleton<ThorMang3FeetForceTorqueSensor>
 {
 private:
-    static ThorMang3FeetForceTorqueSensor *unique_instance_;
-
     int             control_cycle_msec_;
     boost::thread   queue_thread_;
     boost::mutex    publish_mutex_;
@@ -46,8 +44,6 @@ private:
 	bool exist_r_leg_an_p_;
 	bool exist_l_leg_an_r_;
 	bool exist_l_leg_an_p_;
-
-    ThorMang3FeetForceTorqueSensor();
 
     void QueueThread();
 
@@ -90,9 +86,8 @@ private:
 	};
 
 public:
+    ThorMang3FeetForceTorqueSensor();
     ~ThorMang3FeetForceTorqueSensor();
-
-    static ThorMang3FeetForceTorqueSensor *GetInstance() { return unique_instance_; }
 
 
 	double r_foot_fx_raw_N,  r_foot_fy_raw_N,  r_foot_fz_raw_N;
@@ -110,7 +105,7 @@ public:
     //void    TopicCallback(const std_msgs::Int16::ConstPtr &msg);
 
     void    Initialize(const int control_cycle_msec, Robot *robot);
-    void    Process(std::map<std::string, Dynamixel *> dxls);
+    void    Process(std::map<std::string, Dynamixel *> dxls, std::map<std::string, Sensor *> sensors);
 
     void	Stop();
     bool	IsRunning();

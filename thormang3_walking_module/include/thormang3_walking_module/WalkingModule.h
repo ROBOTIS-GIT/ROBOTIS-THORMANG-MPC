@@ -41,11 +41,9 @@
 namespace ROBOTIS
 {
 
-class WalkingMotionModule : public MotionModule
+class WalkingMotionModule : public MotionModule, public Singleton<WalkingMotionModule>
 {
 private:
-    static WalkingMotionModule *unique_instance_;
-
     int             control_cycle_msec_;
     boost::thread   queue_thread_;
     boost::mutex    publish_mutex_;
@@ -55,8 +53,6 @@ private:
     Eigen::MatrixXd desired_matrix_g_to_rfoot_;
     Eigen::MatrixXd desired_matrix_g_to_lfoot_;
 
-
-    WalkingMotionModule();
 
     void QueueThread();
 
@@ -107,6 +103,7 @@ private:
     void	SetBalanceParam(thormang3_walking_module_msgs::BalanceParam& balance_param_msg);
 
 public:
+    WalkingMotionModule();
     virtual ~WalkingMotionModule();
 
     double gyro_x, gyro_y;
@@ -116,7 +113,6 @@ public:
     double l_foot_fx_N,  l_foot_fy_N,  l_foot_fz_N;
     double l_foot_Tx_Nm, l_foot_Ty_Nm, l_foot_Tz_Nm;
 
-    static WalkingMotionModule *GetInstance() { return unique_instance_; }
     void    Initialize(const int control_cycle_msec, Robot *robot);
     //void	ForceTorqueSensorInitialize();
     void    Process(std::map<std::string, Dynamixel *> dxls, std::map<std::string, double> sensors);

@@ -10,8 +10,6 @@
 
 using namespace ROBOTIS;
 
-ManipulationModule *ManipulationModule::unique_instance_ = new ManipulationModule();
-
 ManipulationModule::ManipulationModule()
     : control_cycle_msec_(0)
 {

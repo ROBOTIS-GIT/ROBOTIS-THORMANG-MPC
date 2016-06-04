@@ -19,11 +19,9 @@
 namespace ROBOTIS
 {
 
-class SensorModuleTutorial : public SensorModule
+class SensorModuleTutorial : public SensorModule, public Singleton<SensorModuleTutorial>
 {
 private:
-    static SensorModuleTutorial *unique_instance_;
-
     int             control_cycle_msec_;
     boost::thread   queue_thread_;
 
@@ -31,20 +29,17 @@ private:
     ros::Subscriber sub1_;
     ros::Publisher  pub1_;
 
-    SensorModuleTutorial();
-
     void QueueThread();
 
 public:
+    SensorModuleTutorial();
     virtual ~SensorModuleTutorial();
-
-    static SensorModuleTutorial *GetInstance() { return unique_instance_; }
 
     /* ROS Topic Callback Functions */
     void    TopicCallback(const std_msgs::Int16::ConstPtr &msg);
 
     void    Initialize(const int control_cycle_msec, Robot *robot);
-    void    Process(std::map<std::string, Dynamixel *> dxls);
+    void    Process(std::map<std::string, Dynamixel *> dxls, std::map<std::string, Sensor *> sensors);
 };
 
 }

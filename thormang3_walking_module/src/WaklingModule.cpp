@@ -12,8 +12,6 @@
 
 using namespace ROBOTIS;
 
-WalkingMotionModule *WalkingMotionModule::unique_instance_ = new WalkingMotionModule();
-
 WalkingMotionModule::WalkingMotionModule()
     : control_cycle_msec_(8)
 {

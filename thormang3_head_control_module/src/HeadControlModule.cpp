@@ -10,8 +10,6 @@
 
 using namespace ROBOTIS;
 
-HeadControlModule *HeadControlModule::unique_instance_ = new HeadControlModule();
-
 HeadControlModule::HeadControlModule()
 : control_cycle_msec_(0)
 , stop_process_(false)

@@ -15,12 +15,10 @@
 
 using namespace ROBOTIS;
 
-BaseModule *BaseModule::unique_instance_ = new BaseModule();
-
 BaseModule::BaseModule()
-: control_cycle_msec_(0)
-, has_goal_joints_(false)
-, ini_pose_only_(false)
+    : control_cycle_msec_(0),
+      has_goal_joints_(false),
+      ini_pose_only_(false)
 {
     enable          = false;
     module_name     = "base_module";

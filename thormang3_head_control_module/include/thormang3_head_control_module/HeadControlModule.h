@@ -23,11 +23,9 @@
 namespace ROBOTIS
 {
 
-class HeadControlModule : public MotionModule
+class HeadControlModule : public MotionModule, public Singleton<HeadControlModule>
 {
 private:
-    static HeadControlModule *unique_instance_;
-
     int             control_cycle_msec_;
     boost::thread   queue_thread_;
     boost::thread	*tra_gene_thread_;
@@ -53,8 +51,6 @@ private:
     Eigen::MatrixXd calc_joint_accel_tra_;
 
     std::map<std::string, int> using_joint_name_;
-
-    HeadControlModule();
 
     /* ROS Topic Callback Functions */
     void Get3DLidarCallback(const std_msgs::String::ConstPtr &msg);
@@ -89,9 +85,8 @@ private:
     };
 
 public:
+    HeadControlModule();
     virtual ~HeadControlModule();
-
-    static HeadControlModule *GetInstance() { return unique_instance_; }
 
     void    Initialize(const int control_cycle_msec, Robot *robot);
     void    Process(std::map<std::string, Dynamixel *> dxls, std::map<std::string, double> sensors);
