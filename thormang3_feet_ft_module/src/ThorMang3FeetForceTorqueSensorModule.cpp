@@ -312,11 +312,9 @@ void ThorMang3FeetForceTorqueSensor::QueueThread()
     thormang3_foot_ft_both_ft_pub_	= _ros_node.advertise<thormang3_feet_ft_module_msgs::BothWrench>("/robotis/feet_ft/both_ft_value", 1);
 
 
+    ros::WallDuration duration(control_cycle_msec_/1000.0);
     while(_ros_node.ok())
-    {
-        _callback_queue.callAvailable();
-        usleep(100);
-    }
+      _callback_queue.callAvailable(duration);
 }
 
 

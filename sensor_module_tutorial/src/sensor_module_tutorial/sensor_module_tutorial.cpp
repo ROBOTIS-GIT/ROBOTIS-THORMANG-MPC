@@ -44,11 +44,9 @@ void SensorModuleTutorial::QueueThread()
     /* publisher */
     pub1_ = _ros_node.advertise<std_msgs::Int16>("/tutorial_publish", 1, true);
 
+    ros::WallDuration duration(control_cycle_msec_/1000.0);
     while(_ros_node.ok())
-    {
-        _callback_queue.callAvailable();
-        usleep(100);
-    }
+      _callback_queue.callAvailable(duration);
 }
 
 void SensorModuleTutorial::TopicCallback(const std_msgs::Int16::ConstPtr &msg)

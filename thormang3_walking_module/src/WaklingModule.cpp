@@ -208,11 +208,9 @@ void	WalkingMotionModule::QueueThread()
     /* sensor topic subscribe */
     ros::Subscriber imu_data_sub	= _ros_node.subscribe("/robotis/sensor/imu/imu",	3, &WalkingMotionModule::IMUDataOutputCallback,		this);
 
+    ros::WallDuration duration(control_cycle_msec_/1000.0);
     while(_ros_node.ok())
-    {
-        _callback_queue.callAvailable();
-        usleep(100);
-    }
+      _callback_queue.callAvailable(duration);
 }
 
 void	WalkingMotionModule::PublishRobotPose(void)
