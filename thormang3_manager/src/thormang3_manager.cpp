@@ -71,10 +71,7 @@ int main(int argc, char **argv)
 
     _controller->StartTimer();
 
-    while(ros::ok())
-    {
-      usleep(1000*1000);
-    }
+    ros::waitForShutdown();
 
     return 0;
 }

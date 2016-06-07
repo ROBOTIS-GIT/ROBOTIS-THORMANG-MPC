@@ -42,8 +42,9 @@ void SensorModuleTutorial::QueueThread()
     /* publisher */
     pub1_ = _ros_node.advertise<std_msgs::Int16>("/tutorial_publish", 1, true);
 
+    ros::WallDuration duration(control_cycle_msec_/1000.0);
     while(_ros_node.ok())
-        _callback_queue.callAvailable();
+      _callback_queue.callAvailable(duration);
 }
 
 void SensorModuleTutorial::TopicCallback(const std_msgs::Int16::ConstPtr &msg)
@@ -53,7 +54,7 @@ void SensorModuleTutorial::TopicCallback(const std_msgs::Int16::ConstPtr &msg)
     pub1_.publish(_msg);
 }
 
-void SensorModuleTutorial::Process(std::map<std::string, Dynamixel *> dxls, std::map<std::string, Sensor *> sensors)
+void SensorModuleTutorial::Process(std::map<std::string, Dynamixel *> dxls)
 {
     UINT16_T ext_port_data_1 = dxls["r_leg_an_p"]->dxl_state->bulk_read_table["external_port_data_1"];
     UINT16_T ext_port_data_2 = dxls["r_leg_an_p"]->dxl_state->bulk_read_table["external_port_data_2"];
