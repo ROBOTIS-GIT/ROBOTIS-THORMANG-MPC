@@ -9,11 +9,9 @@ project(thormang3_manager)
 ################################################################################
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  dynamixel_sdk
-  robotis_framework_common
-  robotis_device
   robotis_controller
   robotis_controller_msgs
+  robotis_framework_common
   robotis_math
   cmake_modules
   ati_ft_sensor
@@ -40,7 +38,9 @@ find_package(Eigen REQUIRED)
 ################################################################################
 # Catkin specific configuration
 ################################################################################
-catkin_package()
+catkin_package(
+  CATKIN_DEPENDS roscpp robotis_framework_common
+)
 
 ################################################################################
 # Build

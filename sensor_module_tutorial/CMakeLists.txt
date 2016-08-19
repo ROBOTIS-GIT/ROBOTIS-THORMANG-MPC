@@ -9,8 +9,6 @@ project(sensor_module_tutorial)
 ################################################################################
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  dynamixel_sdk
-  robotis_device
   robotis_framework_common
 )
 
@@ -28,6 +26,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES sensor_module_tutorial
+  CATKIN_DEPENDS roscpp robotis_framework_common
 )
 
 ################################################################################

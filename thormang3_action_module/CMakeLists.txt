@@ -10,8 +10,6 @@ project(thormang3_action_module)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  dynamixel_sdk
-  robotis_device
   robotis_controller_msgs
   robotis_framework_common
   thormang3_action_module_msgs
@@ -31,6 +29,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES thormang3_action_module
+  CATKIN_DEPENDS roscpp robotis_framework_common
 )
 
 ################################################################################

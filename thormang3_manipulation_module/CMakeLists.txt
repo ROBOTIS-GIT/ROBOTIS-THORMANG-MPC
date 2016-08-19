@@ -8,8 +8,6 @@ project(thormang3_manipulation_module)
 # Packages
 ################################################################################
 find_package(catkin REQUIRED COMPONENTS
-  dynamixel_sdk
-  robotis_device
   robotis_math
   robotis_controller_msgs
   robotis_framework_common
@@ -37,6 +35,7 @@ find_package(Eigen REQUIRED)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES thormang3_manipulation_module
+  CATKIN_DEPENDS roscpp robotis_framework_common
 )
 
 ################################################################################
