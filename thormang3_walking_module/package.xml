@@ -34,4 +34,6 @@
   <run_depend>robotis_math</run_depend>
   <run_depend>robotis_framework_common</run_depend>
   <run_depend>thormang3_walking_module_msgs</run_depend>
+  <run_depend>thormang3_kinematics_dynamics</run_depend>
+  <run_depend>thormang3_balance_control</run_depend>
 </package>
