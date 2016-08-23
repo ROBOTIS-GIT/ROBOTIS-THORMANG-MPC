@@ -76,11 +76,9 @@ void MotionModuleTutorial::queueThread()
   /* publisher */
   pub1_ = ros_node.advertise<std_msgs::Int16>("/tutorial_publish", 1, true);
 
-  while (ros_node.ok())
-  {
-    callback_queue.callAvailable();
-    usleep(1000);
-  }
+  ros::WallDuration duration(control_cycle_msec_/1000.0);
+  while(ros_node.ok())
+    callback_queue.callAvailable(duration);
 }
 
 void MotionModuleTutorial::topicCallback(const std_msgs::Int16::ConstPtr &msg)

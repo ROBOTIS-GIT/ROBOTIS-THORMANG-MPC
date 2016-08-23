@@ -192,11 +192,9 @@ void ManipulationModule::queueThread()
   ros::ServiceServer get_kinematics_pose_server = ros_node.advertiseService("/robotis/manipulation/get_kinematics_pose",
                                                                             &ManipulationModule::getKinematicsPoseCallback, this);
 
-  while (ros_node.ok())
-  {
-    callback_queue.callAvailable();
-    usleep(100);
-  }
+  ros::WallDuration duration(control_cycle_msec_/1000.0);
+  while(ros_node.ok())
+    callback_queue.callAvailable(duration);
 }
 
 void ManipulationModule::initPoseMsgCallback(const std_msgs::String::ConstPtr& msg)

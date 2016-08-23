@@ -140,11 +140,9 @@ void ActionModule::queueThread()
   /* ROS Service Callback Functions */
   ros::ServiceServer is_running_server = ros_node.advertiseService("/robotis/action/is_running", &ActionModule::isRunningServiceCallback, this);
 
+  ros::WallDuration duration(control_cycle_msec_/1000.0);
   while(ros_node.ok())
-  {
-    callback_queue.callAvailable();
-    usleep(100);
-  }
+    callback_queue.callAvailable(duration);
 }
 
 bool ActionModule::isRunningServiceCallback(thormang3_action_module_msgs::IsRunning::Request  &req,

@@ -242,11 +242,9 @@ void BaseModule::queueThread()
   // for gui
   ros::Subscriber ini_pose_msg_sub = ros_node.subscribe("/robotis/base/ini_pose", 5, &BaseModule::initPoseMsgCallback, this);
 
-  while (ros_node.ok())
-  {
-    callback_queue.callAvailable();
-    usleep(100);
-  }
+  ros::WallDuration duration(control_cycle_msec_/1000.0);
+  while(ros_node.ok())
+    callback_queue.callAvailable(duration);
 }
 
 void BaseModule::initPoseMsgCallback(const std_msgs::String::ConstPtr& msg)
