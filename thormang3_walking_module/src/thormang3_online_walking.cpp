@@ -37,6 +37,7 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <boost/thread/mutex.hpp>
 #include "thormang3_walking_module/thormang3_online_walking.h"
 
 
@@ -302,7 +303,8 @@ void RobotisOnlineWalking::initialize()
   if(real_running)
     return;
 
-  mutex_lock_.lock();
+  boost::lock_guard<boost::mutex> lock(mutex_lock_);
+
   added_step_data_.clear();
 
   // initialize balance
@@ -454,8 +456,6 @@ void RobotisOnlineWalking::initialize()
   x_lipm_.resize(3, 1);    y_lipm_.resize(3, 1);
   x_lipm_.fill(0.0);       y_lipm_.fill(0.0);
 
-  mutex_lock_.unlock();
-
   r_shoulder_out_angle_rad_ = r_shoulder_dir_*(mat_robot_to_rfoot_.coeff(0, 3) - mat_robot_to_lfoot_.coeff(0, 3))*shouler_swing_gain_ + r_init_shoulder_angle_rad_;
   l_shoulder_out_angle_rad_ = l_shoulder_dir_*(mat_robot_to_lfoot_.coeff(0, 3) - mat_robot_to_rfoot_.coeff(0, 3))*shouler_swing_gain_ + l_init_shoulder_angle_rad_;
   r_elbow_out_angle_rad_ = r_elbow_dir_*(mat_robot_to_rfoot_.coeff(0, 3) - mat_robot_to_lfoot_.coeff(0, 3))*elbow_swing_gain_ + r_init_elbow_angle_rad_;
@@ -473,7 +473,8 @@ void RobotisOnlineWalking::reInitialize()
   if(real_running)
     return;
 
-  mutex_lock_.lock();
+  boost::lock_guard<boost::mutex> lock(mutex_lock_);
+
   added_step_data_.clear();
 
   //Initialize Time
@@ -567,8 +568,6 @@ void RobotisOnlineWalking::reInitialize()
   sum_of_cx_ = 0.0;
   sum_of_cy_ = 0.0;
   x_lipm_.fill(0.0);        y_lipm_.fill(0.0);
-
-  mutex_lock_.unlock();
 
   left_fz_trajectory_start_time_ = 0;
   left_fz_trajectory_end_time_  = 0;
@@ -933,7 +932,7 @@ void RobotisOnlineWalking::process()
   }
   else
   {
-    mutex_lock_.lock();
+    boost::mutex::scoped_lock lock(mutex_lock_);
 
     calcStepIdxData();
     calcRefZMP();
@@ -1236,8 +1235,9 @@ void RobotisOnlineWalking::process()
       {
         real_running = false;
         calcStepIdxData();
-        mutex_lock_.unlock();
+        lock.unlock();
         reInitialize();
+        lock.lock();
       }
 
       if(balancing_index_ == BalancingPhase0 || balancing_index_ == BalancingPhase9)
@@ -1319,7 +1319,7 @@ void RobotisOnlineWalking::process()
       }
     }
 
-    mutex_lock_.unlock();
+    lock.unlock();
 
     mat_g_to_cob_ = robotis_framework::getTransformationXYZRPY(present_body_pose_.x, present_body_pose_.y, present_body_pose_.z,
         present_body_pose_.roll, present_body_pose_.pitch, present_body_pose_.yaw);
