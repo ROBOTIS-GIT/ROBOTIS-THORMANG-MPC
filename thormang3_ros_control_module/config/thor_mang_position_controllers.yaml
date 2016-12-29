@@ -1,0 +1,11 @@
+#thor:
+# position controllers ---------------------------------------
+  head_p_position_controller:
+    type: position_controllers/JointPositionController
+    joint: head_p
+    pid: {p: 10.0, i: 0.0, d: 0.0}
+
+  head_y_position_controller:
+    type: position_controllers/JointPositionController
+    joint: head_y
+    pid: {p: 10.0, i: 0.0, d: 0.0}

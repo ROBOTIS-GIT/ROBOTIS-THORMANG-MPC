@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(thormang3_manager)
 
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 ################################################################################
 # Packages
 ################################################################################
@@ -18,6 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
   cmake_modules
   ati_ft_sensor
   thormang3_kinematics_dynamics
+  thormang3_imu_module
   thormang3_feet_ft_module
   thormang3_balance_control
   thormang3_action_module
@@ -25,6 +28,7 @@ find_package(catkin REQUIRED COMPONENTS
   thormang3_manipulation_module
   thormang3_walking_module
   thormang3_base_module
+  thormang3_ros_control_module
 )
 
 find_package(Eigen REQUIRED)

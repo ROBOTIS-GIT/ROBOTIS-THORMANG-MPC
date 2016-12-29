@@ -21,6 +21,9 @@
     
     <!-- lidar -->    
     <include file="$(find thormang3_description)/launch/thor_laserscan.launch" if="$(arg use_lidar)"/> 
+
+    <!-- ros control module -->
+    <include file="$(find thormang3_ros_control_module)/launch/load_trajectory_controllers.launch" />
     
     <!-- THORMANG3 Manager -->
     <node name="thormang3_manager" pkg="thormang3_manager" type="thormang3_manager" output="screen"/>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+  <rosparam file="$(find thormang3_ros_control_module)/config/ros_control_module_config.yaml" command="load" ns="ros_control_module" />
+  <rosparam file="$(find thormang3_ros_control_module)/config/thor_mang_position_controllers.yaml" command="load" />
+
+  <!-- load position controllers -->
+  <node name="position_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+    args="head_p_position_controller
+          head_y_position_controller"/>
+</launch>
+

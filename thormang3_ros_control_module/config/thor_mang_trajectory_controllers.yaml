@@ -1,0 +1,171 @@
+#thor:
+# trajectory controllers ---------------------------------------
+
+# -------------------- head controller -------------------
+ head_traj_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - head_p
+      - head_y
+      
+    constraints:
+      goal_time: &goal_time_constraint 4.0
+      head_p:
+        goal: &goal_pos_constraint 0.5
+        trajectory: &trajectory_pos_constraint 1.0
+      head_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+
+# -------------------- torso controller -------------------
+ torso_traj_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - torso_y
+      
+    constraints:
+      goal_time: *goal_time_constraint
+      stopped_velocity_tolerance: 1.0
+      torso_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+
+# -------------------- left arm controller -------------------
+ left_arm_traj_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - l_arm_sh_p1
+      - l_arm_sh_r
+      - l_arm_sh_p2
+      - l_arm_el_y
+      - l_arm_wr_r
+      - l_arm_wr_y
+      - l_arm_wr_p
+      
+    constraints:
+      goal_time: *goal_time_constraint
+      stopped_velocity_tolerance: 1.0
+      l_arm_sh_p1:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_arm_sh_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      l_arm_sh_p2:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_arm_el_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      l_arm_wr_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_arm_wr_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_arm_wr_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+        
+# -------------------- right arm controller -------------------
+ right_arm_traj_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - r_arm_sh_p1
+      - r_arm_sh_r
+      - r_arm_sh_p2
+      - r_arm_el_y
+      - r_arm_wr_r
+      - r_arm_wr_y
+      - r_arm_wr_p
+      
+    constraints:
+      goal_time: *goal_time_constraint
+      stopped_velocity_tolerance: 1.0
+      r_arm_sh_p1:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_arm_sh_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      r_arm_sh_p2:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_arm_el_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      r_arm_wr_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_arm_wr_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_arm_wr_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+
+# -------------------- left leg controller -------------------
+ left_leg_traj_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - l_leg_hip_y
+      - l_leg_hip_r
+      - l_leg_hip_p
+      - l_leg_kn_p
+      - l_leg_an_r
+      - l_leg_an_p
+      
+    constraints:
+      goal_time: *goal_time_constraint
+      stopped_velocity_tolerance: 1.0
+      l_leg_hip_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_leg_hip_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      l_leg_hip_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_leg_kn_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      l_leg_an_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      l_leg_an_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+        
+# -------------------- right leg controller -------------------
+ right_leg_traj_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - r_leg_hip_y
+      - r_leg_hip_r
+      - r_leg_hip_p
+      - r_leg_kn_p
+      - r_leg_an_r
+      - r_leg_an_p
+      
+    constraints:
+      goal_time: *goal_time_constraint
+      stopped_velocity_tolerance: 1.0
+      r_leg_hip_y:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_leg_hip_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      r_leg_hip_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_leg_kn_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint        
+      r_leg_an_r:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
+      r_leg_an_p:
+        goal: *goal_pos_constraint
+        trajectory: *trajectory_pos_constraint
