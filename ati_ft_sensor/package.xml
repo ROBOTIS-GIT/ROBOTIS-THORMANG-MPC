@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>ati_ft_sensor</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     This package is a library for using ATI's transducer.
     This package describes basic functions for sensing force and torque.

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>thormang3_action_module</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     This package is a motion module that can play the saved action.
     This module is based on position control.

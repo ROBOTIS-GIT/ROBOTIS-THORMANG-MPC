@@ -2,6 +2,10 @@
 Changelog for package motion_module_tutorial
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.1 (2016-08-19)
+-----------
+* none
+
 0.1.0 (2016-08-18)
 -----------
 * first public release for Kinetic

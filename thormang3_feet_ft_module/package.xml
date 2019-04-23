@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>thormang3_feet_ft_module</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     This package is a sensor module for force torque sensors on feet.
   </description>

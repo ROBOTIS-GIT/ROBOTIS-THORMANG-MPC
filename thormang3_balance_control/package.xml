@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>thormang3_balance_control</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     The thormang3_balance_control package
     This balance control is based on PD control.

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>thormang3_manager</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     This package describes robot manager to execute THORMANG3's motion modules.
   </description>
@@ -34,7 +34,6 @@
   <build_depend>thormang3_action_module_msgs</build_depend>
   <build_depend>thormang3_tuning_module</build_depend>
   <build_depend>thormang3_tuning_module_msgs</build_depend>
-  <!--<build_depend>thormang3_wholebody_module</build_depend>-->
   <build_depend>thormang3_gripper_module</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>robotis_controller</run_depend>

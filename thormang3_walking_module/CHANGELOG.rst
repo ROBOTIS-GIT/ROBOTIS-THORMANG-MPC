@@ -2,6 +2,13 @@
 Changelog for package thormang3_walking_module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.1 (2016-08-19)
+-----------
+* modify CMakeLists.txt for sync
+* file name is changed
+* bug fix
+* Contributors: Jay Song
+
 0.1.0 (2016-08-18)
 -----------
 * first public release for Kinetic

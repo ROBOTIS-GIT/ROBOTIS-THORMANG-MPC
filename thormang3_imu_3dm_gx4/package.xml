@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>thormang3_imu_3dm_gx4</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     Driver for Microstrain 3DM-GX4-25 IMU
     This package is modified by robotis.
@@ -11,6 +11,9 @@
   <author>Gareth Cross</author>
   <maintainer email="hjsong@robotis.com">Jay Song</maintainer>
   <maintainer email="pyo@robotis.com">pyo</maintainer>
+  <url type="bugtracker">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-MPC/issues</url>
+  <url type="repository">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-MPC</url>
+  <url type="website">http://wiki.ros.org/thormang3_imu_3dm_gx4</url>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>message_generation</build_depend>
   <exec_depend>message_runtime</exec_depend>

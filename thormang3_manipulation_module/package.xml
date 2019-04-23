@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>thormang3_manipulation_module</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>
     This package describes basic function to control THORMANG3's upper-body.
     This module is based on position control.
