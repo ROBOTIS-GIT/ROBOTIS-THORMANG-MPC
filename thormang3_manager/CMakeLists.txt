@@ -19,14 +19,21 @@ find_package(catkin REQUIRED COMPONENTS
   ati_ft_sensor
   thormang3_kinematics_dynamics
   thormang3_feet_ft_module
+  thormang3_feet_ft_module_msgs
   thormang3_balance_control
   thormang3_action_module
+  thormang3_action_module_msgs
   thormang3_head_control_module
+  thormang3_head_control_module_msgs
   thormang3_manipulation_module
+  thormang3_manipulation_module_msgs
   thormang3_walking_module
+  thormang3_walking_module_msgs
   thormang3_base_module
   #thormang3_wholebody_module
   thormang3_gripper_module
+  thormang3_tuning_module
+  thormang3_tuning_module_msgs
 )
 
 find_package(Eigen REQUIRED)

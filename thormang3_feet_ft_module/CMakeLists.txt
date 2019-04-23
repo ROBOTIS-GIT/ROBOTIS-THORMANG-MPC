@@ -19,6 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
   thormang3_kinematics_dynamics
   thormang3_feet_ft_module_msgs
   ati_ft_sensor
+  robotis_controller_msgs
 )
 
 find_package(Eigen REQUIRED)

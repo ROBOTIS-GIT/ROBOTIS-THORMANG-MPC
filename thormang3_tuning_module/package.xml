@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>thormang3_tuning_module</name>
+  <version>0.2.1</version>
+  <description>
+    The thormang3_tuning_module package
+  </description>
+  <license>Apache 2.0</license>
+  <author email="kmjung@robotis.com">Kayman</author>
+  <maintainer email="pyo@robotis.com">Pyo</maintainer>
+  <url type="bugtracker">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-MPC/issues</url>
+  <url type="repository">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-MPC</url>
+  <url type="emanual">http://emanual.robotis.com/docs/en/platform/thormang3/introduction/</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>robotis_controller_msgs</depend>
+  <depend>thormang3_tuning_module_msgs</depend>
+  <depend>cmake_modules</depend>
+  <depend>robotis_framework_common</depend>
+  <depend>robotis_device</depend>
+  <depend>robotis_math</depend>
+  <depend>thormang3_kinematics_dynamics</depend>
+  <depend>boost</depend>
+  <depend>eigen</depend>
+  <depend>yaml-cpp</depend>
+</package>
