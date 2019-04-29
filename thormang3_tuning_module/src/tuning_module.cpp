@@ -823,6 +823,16 @@ void TuningModule::jointGainDataCallback(const thormang3_tuning_module_msgs::Joi
   data_mutex_.lock();
 
   tuning_data_.joint_name_.setValue(msg->joint_name);
+  std::map<std::string, int>::iterator joint_name_to_id_it = joint_name_to_id_.find(msg->joint_name);
+  if (joint_name_to_id_it != joint_name_to_id_.end())
+  {
+    // get tuning data
+    int joint_id = joint_name_to_id_it->second;
+    tuning_data_.position_.setValue(joint_state_->goal_joint_state_[joint_id].position_);
+  }
+  else
+      return;
+
   tuning_data_.p_gain_.setValue(msg->p_gain);
   tuning_data_.i_gain_.setValue(msg->i_gain);
   tuning_data_.d_gain_.setValue(msg->d_gain);
