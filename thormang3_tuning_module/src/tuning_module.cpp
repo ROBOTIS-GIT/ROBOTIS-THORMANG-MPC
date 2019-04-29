@@ -1026,15 +1026,15 @@ void TuningModule::parseDxlInit(const std::string &path)
       joint_data->d_gain_ = NONE_GAIN;
 
     if(joint_node["velocity_p_gain"] != NULL)
-      joint_data->velocity_p_gain_ = joint_node["position_p_gain"].as<int>();
+      joint_data->velocity_p_gain_ = joint_node["velocity_p_gain"].as<int>();
     else
       joint_data->velocity_p_gain_ = NONE_GAIN;
     if(joint_node["velocity_i_gain"] != NULL)
-      joint_data->velocity_i_gain_ = joint_node["position_i_gain"].as<int>();
+      joint_data->velocity_i_gain_ = joint_node["velocity_i_gain"].as<int>();
     else
       joint_data->velocity_i_gain_ = NONE_GAIN;
     if(joint_node["velocity_d_gain"] != NULL)
-      joint_data->velocity_d_gain_ = joint_node["position_d_gain"].as<int>();
+      joint_data->velocity_d_gain_ = joint_node["velocity_d_gain"].as<int>();
     else
       joint_data->velocity_d_gain_ = NONE_GAIN;
   }
